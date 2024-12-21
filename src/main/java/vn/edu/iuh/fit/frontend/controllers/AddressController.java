@@ -55,6 +55,7 @@ public class AddressController {
 
     @PostMapping("/add")
     public String add(@ModelAttribute("address") Address address) {
+        System.out.println(address);
         addressService.SaveAddress(address);
         return "redirect:/";
     }
