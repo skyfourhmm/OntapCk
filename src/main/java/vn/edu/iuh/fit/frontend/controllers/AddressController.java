@@ -36,7 +36,8 @@ public class AddressController {
     }
 
     @PostMapping("/updateAddress")
-    public String updateAddress(@ModelAttribute("address") Address address) {
+    public String updateAddress(@RequestParam("id") Long id, @ModelAttribute("address") Address address) {
+        address.setAddressId(id);
         addressService.updateAddress(address);
         return "redirect:/";
     }
