@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Chỉnh sửa địa chỉ</title>
+</head>
+<body>
+<h1>Chỉnh sửa địa chỉ</h1>
+<form th:action="@{/updateAddress}" method="post">
+    <input type="hidden" th:name="id" th:value="${address.addressId}" />
+    <label for="street">Đường:</label>
+    <input type="text" th:id="street" th:name="street" th:value="${address.street}" /><br>
+
+    <label for="city">Thành phố:</label>
+    <input type="text" th:id="city" th:name="city" th:value="${address.city}" /><br>
+
+    <label for="country">Quốc gia:</label>
+    <input type="text" th:id="country" th:name="country" th:value="${address.country}" /><br>
+
+    <button type="submit">Cập nhật</button>
+</form>
+</body>
+</html>

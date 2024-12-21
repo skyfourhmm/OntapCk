@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+    <title>Address List</title>
+</head>
+<body>
+<h1>List of Addresses</h1>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Street</th>
+        <th>City</th>
+        <th>Country</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <form th:action="@{/addAddress}" method="GET">
+        <button type="submit">Thêm</button>
+    </form>
+
+    <tr th:each="address : ${addresses}">
+        <td th:text="${address.addressId}"></td>
+        <td th:text="${address.street}"></td>
+        <td th:text="${address.city}"></td>
+        <td th:text="${address.country}"></td>
+        <td>
+            <form th:action="@{/editAddress}" method="get">
+                <input type="hidden" th:name="id" th:value="${address.addressId}" />
+                <button type="submit">Sửa</button>
+            </form>
+
+
+            <!-- Nút xóa -->
+            <form th:action="@{/deleteAddress}" method="post">
+                <input type="hidden" th:name="id" th:value="${address.addressId}">
+                <button type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa?')">Xóa</button>
+            </form>
+        </td>
+    </tr>
+
+    </tbody>
+</table>
+</body>
+</html>
